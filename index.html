@@ -13,40 +13,52 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+background:linear-gradient(135deg,#ff758c,#ff7eb3,#fad0c4);
 font-family:Arial;
 overflow:hidden;
 text-align:center;
+color:white;
 }
 
+/* cartoon */
+.cartoon{
+width:200px;
+margin-bottom:20px;
+animation:floatCartoon 4s ease-in-out infinite;
+}
+
+@keyframes floatCartoon{
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+}
+
+/* button */
+
 button{
-padding:15px 30px;
+padding:16px 35px;
 font-size:22px;
 border:none;
-border-radius:30px;
+border-radius:40px;
 background:#ff4081;
 color:white;
 cursor:pointer;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
 }
 
-h1{
-font-size:55px;
-color:white;
+/* message */
+
+#message{
+font-size:45px;
+margin-top:20px;
+white-space:nowrap;
+border-right:3px solid white;
+width:0;
+overflow:hidden;
 display:none;
-animation:fadeIn 3s;
 }
 
-p{
-font-size:35px;
-color:white;
-display:none;
-}
-
-@keyframes fadeIn{
-0%{opacity:0; transform:scale(0.5);}
-100%{opacity:1; transform:scale(1);}
-}
+/* hearts */
 
 .heart{
 position:absolute;
@@ -63,7 +75,23 @@ opacity:1;
 transform:translateY(-10vh);
 opacity:0;
 }
+}
 
+/* rose petals */
+
+.petal{
+position:absolute;
+font-size:24px;
+animation:fall 8s linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh) rotate(0deg);
+}
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
 }
 
 </style>
@@ -72,42 +100,28 @@ opacity:0;
 
 <body>
 
-<button onclick="showMessage()">Tap for your surprise Amiru ❤️</button>
+<img class="cartoon" src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
 
-<h1 id="msg">Happy Women's Day ❤️</h1>
-<p id="msg2">My World – Amiru 💕</p>
+<button onclick="startSurprise()">Tap for your surprise Amiru ❤️</button>
+
+<div id="message">Happy Women's Day ❤️ My World – Amiru 💕</div>
 
 <script>
 
-function showMessage(){
+function startSurprise(){
 
 document.querySelector("button").style.display="none";
 
-document.getElementById("msg").style.display="block";
-document.getElementById("msg2").style.display="block";
+typeText();
 
 setInterval(createHeart,300);
+setInterval(createPetal,500);
 
 }
 
-function createHeart(){
+function typeText(){
 
-const heart=document.createElement("div");
-heart.classList.add("heart");
+const text="Happy Women's Day ❤️ My World – Amiru 💕";
+const msg=document.getElementById("message");
 
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},6000);
-
-}
-
-</script>
-
-</body>
-</html>
+msg.style
