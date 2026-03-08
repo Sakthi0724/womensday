@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Happy Women's Day</title>
+<title>For Amiru ❤️</title>
 
 <style>
 
 body{
 margin:0;
 padding:0;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 font-family:Arial;
 overflow:hidden;
+text-align:center;
+}
+
+button{
+padding:15px 30px;
+font-size:22px;
+border:none;
+border-radius:30px;
+background:#ff4081;
+color:white;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 h1{
 font-size:55px;
 color:white;
-animation:fadeIn 3s ease-in-out;
+display:none;
+animation:fadeIn 3s;
 }
 
 p{
 font-size:35px;
 color:white;
-margin-top:10px;
-animation:slideUp 3s ease-in-out;
+display:none;
 }
 
 @keyframes fadeIn{
@@ -36,29 +48,22 @@ animation:slideUp 3s ease-in-out;
 100%{opacity:1; transform:scale(1);}
 }
 
-@keyframes slideUp{
-0%{opacity:0; transform:translateY(50px);}
-100%{opacity:1; transform:translateY(0);}
-}
-
-/* floating hearts */
-
 .heart{
 position:absolute;
-color:red;
 font-size:25px;
 animation:float 6s linear infinite;
 }
 
 @keyframes float{
 0%{
-transform:translateY(100vh) scale(0);
+transform:translateY(100vh);
 opacity:1;
 }
 100%{
-transform:translateY(-10vh) scale(1.5);
+transform:translateY(-10vh);
 opacity:0;
 }
+
 }
 
 </style>
@@ -67,28 +72,42 @@ opacity:0;
 
 <body>
 
-<h1>Happy Women's Day ❤️</h1>
-<p>My World – Amiru 💕</p>
+<button onclick="showMessage()">Tap for your surprise Amiru ❤️</button>
+
+<h1 id="msg">Happy Women's Day ❤️</h1>
+<p id="msg2">My World – Amiru 💕</p>
 
 <script>
 
+function showMessage(){
+
+document.querySelector("button").style.display="none";
+
+document.getElementById("msg").style.display="block";
+document.getElementById("msg2").style.display="block";
+
+setInterval(createHeart,300);
+
+}
+
 function createHeart(){
-const heart = document.createElement("div");
+
+const heart=document.createElement("div");
 heart.classList.add("heart");
+
 heart.innerHTML="❤️";
+
 heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*3+3)+"s";
+
 document.body.appendChild(heart);
 
 setTimeout(()=>{
 heart.remove();
 },6000);
-}
 
-setInterval(createHeart,300);
+}
 
 </script>
 
 </body>
-
 </html>
