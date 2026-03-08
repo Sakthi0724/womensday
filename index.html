@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>For Amiru ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
 
@@ -13,14 +16,14 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-background:linear-gradient(135deg,#ff758c,#ff7eb3,#fad0c4);
-font-family:Arial;
+background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
+font-family:'Pacifico',cursive;
 overflow:hidden;
 text-align:center;
-color:white;
 }
 
 /* cartoon */
+
 .cartoon{
 width:200px;
 margin-bottom:20px;
@@ -33,32 +36,38 @@ animation:floatCartoon 4s ease-in-out infinite;
 100%{transform:translateY(0);}
 }
 
+/* glowing text */
+
+#message{
+
+font-size:55px;
+display:none;
+color:#ffd6e7;
+
+text-shadow:
+0 0 10px #ff4da6,
+0 0 20px #ff4da6,
+0 0 40px #ff1a8c,
+0 0 60px #ff1a8c;
+
+}
+
 /* button */
 
 button{
+
 padding:16px 35px;
 font-size:22px;
 border:none;
 border-radius:40px;
-background:#ff4081;
+background:#ff4da6;
 color:white;
 cursor:pointer;
 box-shadow:0 6px 20px rgba(0,0,0,0.3);
+
 }
 
-/* message */
-
-#message{
-font-size:45px;
-margin-top:20px;
-white-space:nowrap;
-border-right:3px solid white;
-width:0;
-overflow:hidden;
-display:none;
-}
-
-/* hearts */
+/* floating hearts */
 
 .heart{
 position:absolute;
@@ -94,6 +103,25 @@ transform:translateY(110vh) rotate(360deg);
 }
 }
 
+/* rose explosion */
+
+.explosion{
+position:absolute;
+font-size:30px;
+animation:explode 2s ease-out forwards;
+}
+
+@keyframes explode{
+0%{
+transform:scale(0);
+opacity:1;
+}
+100%{
+transform:scale(2) translateY(-100px);
+opacity:0;
+}
+}
+
 </style>
 
 </head>
@@ -104,13 +132,15 @@ transform:translateY(110vh) rotate(360deg);
 
 <button onclick="startSurprise()">Tap for your surprise Amiru ❤️</button>
 
-<div id="message">Happy Women's Day ❤️ Amiru 💕</div>
+<div id="message"></div>
 
 <script>
 
 function startSurprise(){
 
 document.querySelector("button").style.display="none";
+
+roseExplosion();
 
 typeText();
 
@@ -122,6 +152,7 @@ setInterval(createPetal,500);
 function typeText(){
 
 const text="Happy Women's Day ❤️ Amiru 💕";
+
 const msg=document.getElementById("message");
 
 msg.style.display="block";
@@ -129,11 +160,15 @@ msg.style.display="block";
 let i=0;
 
 const typing=setInterval(()=>{
-msg.style.width=(i+1)+"ch";
+
+msg.innerHTML=text.substring(0,i+1);
+
 i++;
 
 if(i>=text.length){
+
 clearInterval(typing);
+
 }
 
 },100);
@@ -143,6 +178,7 @@ clearInterval(typing);
 function createHeart(){
 
 const heart=document.createElement("div");
+
 heart.classList.add("heart");
 
 heart.innerHTML="❤️";
@@ -152,7 +188,9 @@ heart.style.left=Math.random()*100+"vw";
 document.body.appendChild(heart);
 
 setTimeout(()=>{
+
 heart.remove();
+
 },6000);
 
 }
@@ -160,6 +198,7 @@ heart.remove();
 function createPetal(){
 
 const petal=document.createElement("div");
+
 petal.classList.add("petal");
 
 petal.innerHTML="🌹";
@@ -169,8 +208,36 @@ petal.style.left=Math.random()*100+"vw";
 document.body.appendChild(petal);
 
 setTimeout(()=>{
+
 petal.remove();
+
 },8000);
+
+}
+
+function roseExplosion(){
+
+for(let i=0;i<20;i++){
+
+const rose=document.createElement("div");
+
+rose.classList.add("explosion");
+
+rose.innerHTML="🌹";
+
+rose.style.left=Math.random()*100+"vw";
+
+rose.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+
+rose.remove();
+
+},2000);
+
+}
 
 }
 
@@ -178,5 +245,3 @@ petal.remove();
 
 </body>
 </html>
-
-
