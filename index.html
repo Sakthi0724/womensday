@@ -124,4 +124,57 @@ function typeText(){
 const text="Happy Women's Day ❤️ My World – Amiru 💕";
 const msg=document.getElementById("message");
 
-msg.style
+msg.style.display="block";
+
+let i=0;
+
+const typing=setInterval(()=>{
+msg.style.width=(i+1)+"ch";
+i++;
+
+if(i>=text.length){
+clearInterval(typing);
+}
+
+},100);
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+function createPetal(){
+
+const petal=document.createElement("div");
+petal.classList.add("petal");
+
+petal.innerHTML="🌹";
+
+petal.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},8000);
+
+}
+
+</script>
+
+</body>
+</html>
